@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+<robot name="kuka_d435" xmlns:xacro="http://wiki.ros.org/xacro">
+  <xacro:property name="DEG2RAD" value="0.017453292519943295" />
+
+  <!-- Camera URDF and Link -->
+  <xacro:include filename="$(find kuka_d435)/urdf/d435.urdf.xacro" />
+  
+  <link name="tool" />
+  <xacro:sensor_d435 name="camera" topics_ns="camera" parent="tool" publish_pointcloud="true">
+    <origin xyz="0.020 0 0" rpy="0 0 0" />
+  </xacro:sensor_d435>  
+
+
+    <link name="map"></link>
+
+    <link name="base_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/base_link.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/base_link.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.009725" />
+        <inertia ixx="0.000068" iyy="0.000083" izz="0.000071" 
+        ixy="-0.000000"  ixz="-0.000000" iyz="-0.000000" />
+      </inertial>
+    </link>
+
+    <link name="link_1">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_1.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_1.STL" />
+        </geometry>
+      </collision>
+     <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.005970" />
+        <inertia ixx="0.000071" iyy="0.000046" izz="0.000054" 
+        ixy="-0.000000"  ixz="0.000005" iyz="-0.000000" />        
+      </inertial>
+    </link>
+
+    <link name="link_2">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_2.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_2.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.008265" />
+        <inertia ixx="0.000050" iyy="0.000149" izz="0.000176" 
+        ixy="-0.000002"  ixz="-0.000001" iyz="0.000000" />
+      </inertial>
+    </link>
+
+    <link name="link_3">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_3.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_3.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.003383" />
+        <inertia ixx="0.000009" iyy="0.000017" izz="0.000016" 
+        ixy="-0.000000"  ixz="-0.000002" iyz="-0.000000" />
+      </inertial>
+    </link>
+
+    <link name="link_4">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_4.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_4.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.002449" />
+        <inertia ixx="0.000007" iyy="0.000011" izz="0.000014" 
+        ixy="-0.000001"  ixz="0.000000" iyz="0.000000" />
+      </inertial>
+    </link>
+
+    <link name="link_5">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_5.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_5.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.000762" />
+        <inertia ixx="0.000001" iyy="0.000001" izz="0.000001" 
+        ixy="-0.000000"  ixz="0.000000" iyz="0.000000" />
+      </inertial>
+    </link>
+
+    <link name="link_6">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_6.dae" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://kuka_d435/meshes/kr6/link_6.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.000076" />
+        <inertia ixx="0.000000" iyy="0.000000" izz="0.000000" 
+        ixy="0.000000"  ixz="0.000000" iyz="0.000000" />
+      </inertial>
+    </link>
+
+
+    <joint name="joint_a1" type="revolute">
+      <origin xyz="0 0 0.4" rpy="0 0 0"/>
+      <parent link="base_link"/>
+      <child link="link_1"/>
+      <axis xyz="0 0 -1"/>
+      <limit lower="${-170 * DEG2RAD}" upper="${170 * DEG2RAD}" effort="0" velocity="${360 * DEG2RAD}"/>
+    </joint>
+
+    <joint name="joint_a2" type="revolute">
+      <origin xyz="0.025 0 0" rpy="0 0 0"/>
+      <parent link="link_1"/>
+      <child link="link_2"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-190 * DEG2RAD}" upper="${45 * DEG2RAD}" effort="0" velocity="${300 * DEG2RAD}"/>
+    </joint>
+
+    <joint name="joint_a3" type="revolute">
+      <origin xyz="0.335 0 0" rpy="0 0 0"/>
+      <parent link="link_2"/>
+      <child link="link_3"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-120 * DEG2RAD}" upper="${156 * DEG2RAD}" effort="0" velocity="${360 * DEG2RAD}"/>
+    </joint>
+
+    <joint name="joint_a4" type="revolute">
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <parent link="link_3"/>
+      <child link="link_4"/>
+      <axis xyz="-1 0 0"/>
+      <limit lower="${-185 * DEG2RAD}" upper="${185 * DEG2RAD}" effort="0" velocity="${381 * DEG2RAD}"/>
+    </joint>
+
+    <joint name="joint_a5" type="revolute">
+      <origin xyz="0.365 0 0" rpy="0 0 0"/>
+      <parent link="link_4"/>
+      <child link="link_5"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="${-120 * DEG2RAD}" upper="${120 * DEG2RAD}" effort="0" velocity="${388 * DEG2RAD}"/>
+    </joint>
+    
+    <joint name="joint_a6" type="revolute">
+      <origin xyz="0.090 0 0" rpy="0 0 0"/>
+      <parent link="link_5"/>
+      <child link="link_6"/>
+      <axis xyz="-1 0 0"/>
+      <limit lower="${-350 * DEG2RAD}" upper="${350 * DEG2RAD}" effort="0" velocity="${615 * DEG2RAD}"/>
+    </joint>
+
+    <joint name="joint_a6-tool" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <parent link="link_6"/>
+      <child link="tool"/>
+      <origin xyz="0 0 0" rpy="0 ${90 * DEG2RAD} 0"/>
+    </joint>
+
+    <!-- ROS base_link to KUKA $ROBROOT coordinate system transform -->
+
+    <joint name="map_joint" type="fixed">
+      <parent link="map"/>
+      <child link="base_link"/>
+    </joint>
+
+
+    <!--TRANSMISSION-->
+
+    <transmission name="trans_a1">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_a1">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="joint_a1_motor">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <transmission name="trans_a2">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_a2">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="joint_a2_motor">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <transmission name="trans_a3">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_a3">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="joint_a3_motor">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <transmission name="trans_a4">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_a4">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="joint_a4_motor">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <transmission name="trans_a5">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_a5">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="joint_a5_motor">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <transmission name="trans_a6">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint_a6">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="joint_a6_motor">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+
+    <!--CONTROLLER-->
+
+    <gazebo>
+      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      </plugin>
+    </gazebo>
+
+    <gazebo>
+      <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so" >
+        <jointName>joint_a1, joint_a2, joint_a3, joint_a4, joint_a5, joint_a6</jointName>
+      </plugin>
+    </gazebo>
+
+
+    <!-- Gazebo-specific link properties  -->
+    <gazebo reference="base_link">
+      <material>Gazebo/Gray</material>
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_1">
+      <material>Gazebo/White</material>
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_2">
+      <material>Gazebo/White</material>
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>  
+    <gazebo reference="link_3">
+      <material>Gazebo/White</material>
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_4">
+      <material>Gazebo/White</material>
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_5">
+      <material>Gazebo/White</material>
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+    <gazebo reference="link_6">
+      <material>Gazebo/Gray</material>
+      <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+
+
+</robot>

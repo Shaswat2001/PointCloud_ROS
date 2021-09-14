@@ -1,0 +1,31 @@
+
+gazebo_ros_control:
+  pid_gains:
+    joint_a1:
+      p: 50
+      i: 0.0
+      d: 10
+    joint_a2:
+      p: 50
+      i: 0.0
+      d: 10
+    joint_a3:
+      p: 50
+      i: 0.0
+      d: 10
+    joint_a4:
+      p: 50
+      i: 0.0
+      d: 10
+    joint_a5:
+      p: 50
+      i: 0.0
+      d: 10
+    joint_a6:
+      p: 50
+      i: 0.0
+      d: 10
+
+
+
+

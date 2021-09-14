@@ -1,0 +1,41 @@
+<launch>
+  <!-- arguments for the urdf xacro file, rviz visualization and namespace -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(find kuka_d435)/urdf/kr6.xacro'"/>
+  
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="false" />
+    <arg name="gui" value="true" />
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+  </include>
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model kuka_d435 -x 0 -y 0 -z 0" respawn="false" output="screen">
+  </node>
+  <rosparam file="$(find kuka_d435)/config/gazebo_controller.yaml" command="load"></rosparam>
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" 
+        output="screen" 
+        args=" arm_controller 
+        joint_state_controller  "></node>
+
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen" >
+  </node>
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"></node> 
+  
+
+  <!--<arg name="gui" default="True" />
+  <param name="use_gui" value="$(arg gui)" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find kuka_d435)/rviz/urdf.rviz" required="true" />-->
+
+
+  <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+  <include file="$(find moveit_shaswat)/launch/move_group.launch" /> 
+
+  <include file="$(find moveit_shaswat)/launch/moveit_rviz.launch">
+    <arg name="rviz_config" value="$(find moveit_shaswat)/launch/moveit.rviz"/>
+  </include>
+
+</launch>

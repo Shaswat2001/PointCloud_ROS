@@ -1,0 +1,5 @@
+<launch>
+
+    <!--<node name="way_point_gen" pkg="kuka_d435" type="waypoints_generater.py" respawn="false" output="screen"/>-->
+    <rosparam param="my_point" file="$(find kuka_d435)/config/way_point.yaml" command="load" />
+</launch>

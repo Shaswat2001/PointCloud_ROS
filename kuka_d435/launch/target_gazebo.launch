@@ -1,0 +1,8 @@
+<launch>
+  <!-- arguments for the urdf xacro file, rviz visualization and namespace -->
+  <param name="target_description" command="$(find xacro)/xacro '$(find kuka_d435)/urdf/box.xacro'"/>
+
+  <!-- push robot_description to factory and spawn robot in gazebo -->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
+        args="-param target_description -urdf -model box_target -x 0.5 -y 0 -z 0.1" respawn="false" output="screen" />
+</launch>

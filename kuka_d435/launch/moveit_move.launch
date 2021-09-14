@@ -1,0 +1,5 @@
+<launch>
+
+    <node name="moveit_kuka" pkg="kuka_d435" type="moveit_kuka" respawn="false" output="screen"/>
+
+</launch>

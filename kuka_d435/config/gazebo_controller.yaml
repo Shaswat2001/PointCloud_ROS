@@ -1,0 +1,56 @@
+
+arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - joint1
+    - joint2
+    - joint3
+    - joint4
+    - joint5
+    - joint6
+    - joint7
+    - joint8
+
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 100
+
+joint_1_pos_controller:
+  type : position_controllers/JointPositionController
+  joint : joint1
+  pid : {p : 100, i : 0.0, d : 10}
+
+joint_2_pos_controller:
+  type : position_controllers/JointPositionController
+  joint : joint2
+  pid : {p : 100, i : 0.0, d : 10}
+
+joint_3_pos_controller:
+  type : position_controllers/JointPositionController
+  joint : joint3
+  pid : {p : 100, i : 0.0, d : 10}
+
+joint_4_pos_controller:
+  type : position_controllers/JointPositionController
+  joint : joint4
+  pid : {p : 100, i : 0.0, d : 10}
+
+joint_5_pos_controller:
+  type : position_controllers/JointPositionController
+  joint : joint5
+  pid : {p : 100, i : 0.0, d : 10}
+
+joint_6_pos_controller:
+  type : position_controllers/JointPositionController
+  joint : joint6
+  pid : {p : 100, i : 0.0, d : 10}
+
+joint_7_pos_controller:
+  type : position_controllers/JointPositionController
+  joint : joint7
+  pid : {p : 100, i : 0.0, d : 10}
+
+joint_8_pos_controller:
+  type : position_controllers/JointPositionController
+  joint : joint8
+  pid : {p : 100, i : 0.0, d : 10}
